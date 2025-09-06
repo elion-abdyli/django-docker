@@ -1,0 +1,8 @@
+{
+    "name": "Django Dev Compose",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "web",
+    "workspaceFolder": "/app",
+    "forwardPorts": [8000],
+    "postStartCommand": "echo 'Django Codespace is ready!'"
+}
