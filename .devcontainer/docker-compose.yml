@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  web:
+    image: python:3.12-slim
+    container_name: django_web
+    working_dir: /app
+    volumes:
+      - ./app:/app   # persist code outside container
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "pip install django &&
+             if [ ! -f manage.py ]; then
+               django-admin startproject myproject .;
+             fi &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
